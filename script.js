@@ -1,11 +1,4 @@
 // 2048 Game Logic with Apple OS UI
-// ASSIGNMENT REQUIREMENTS IMPLEMENTED:
-// 1. JavaScript-based UI that creates a puzzle game
-// 2. Tracks user input (keyboard, touch, button clicks)
-// 3. Modifies DOM based on user input and game state
-// 4. Dynamic element creation and manipulation
-// 5. Game state management with visual feedback
-// 6. Interactive puzzle mechanics with animations
 class Game2048 {
   constructor() {
     this.board = [];
@@ -37,7 +30,7 @@ class Game2048 {
   }
 
   setupEventListeners() {
-    // ASSIGNMENT REQUIREMENT: User input tracking and DOM manipulation
+    // User input tracking and DOM manipulation
     // Keyboard controls - tracks user input and modifies DOM based on it
     document.addEventListener("keydown", (e) => {
       if (this.gameOver) return;
@@ -62,7 +55,7 @@ class Game2048 {
       }
     });
 
-    // ASSIGNMENT REQUIREMENT: Touch/swipe controls for mobile interaction
+    // Touch/swipe controls for mobile interaction
     let startX, startY, endX, endY;
 
     document.addEventListener("touchstart", (e) => {
@@ -101,7 +94,7 @@ class Game2048 {
       }
     });
 
-    // ASSIGNMENT REQUIREMENT: Button controls that modify game state and DOM
+    // Button controls that modify game state and DOM
     document.getElementById("new-game").addEventListener("click", () => {
       this.newGame();
     });
@@ -297,19 +290,19 @@ class Game2048 {
   }
 
   renderBoard() {
-    // ASSIGNMENT REQUIREMENT: Dynamic DOM manipulation based on game state
+    // Dynamic DOM manipulation based on game state
     const gameBoard = document.getElementById("game-board");
     gameBoard.innerHTML = "";
 
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 4; col++) {
-        // ASSIGNMENT REQUIREMENT: Creating DOM elements dynamically
+        // Creating DOM elements dynamically
         const tile = document.createElement("div");
         tile.className = "tile";
 
         const value = this.board[row][col];
         if (value !== 0) {
-          // ASSIGNMENT REQUIREMENT: Modifying DOM based on game state
+          // Modifying DOM based on game state
           tile.classList.add(`tile-${value}`);
           tile.innerHTML = `<div class="tile-content">${value}</div>`;
 
@@ -346,7 +339,7 @@ class Game2048 {
   }
 
   showMergeAnimation(value, scoreIncrease) {
-    // ASSIGNMENT REQUIREMENT: Creating dynamic DOM elements for visual feedback
+    // Creating dynamic DOM elements for visual feedback
     const feedback = document.createElement("div");
     feedback.className = "merge-feedback";
     feedback.textContent = `+${scoreIncrease}`;
@@ -354,14 +347,14 @@ class Game2048 {
     // Determine if this is a high-value merge
     const isHighValue = value >= 128;
 
-    // ASSIGNMENT REQUIREMENT: Modifying DOM elements based on game state
+    // Modifying DOM elements based on game state
     const tiles = document.querySelectorAll(".tile");
     let animationApplied = false;
 
     tiles.forEach((tile) => {
       const tileContent = tile.querySelector(".tile-content");
       if (tileContent && tileContent.textContent === value.toString()) {
-        // ASSIGNMENT REQUIREMENT: Dynamic class manipulation for animations
+        // Dynamic class manipulation for animations
         tile.classList.add(isHighValue ? "tile-merged-high" : "tile-merged");
 
         // Remove animation class after animation completes
@@ -374,7 +367,7 @@ class Game2048 {
           isHighValue ? 800 : 600
         );
 
-        // ASSIGNMENT REQUIREMENT: Adding elements to DOM dynamically
+        // Adding elements to DOM dynamically
         if (!animationApplied) {
           tile.style.position = "relative";
           tile.appendChild(feedback);
@@ -400,12 +393,12 @@ class Game2048 {
   }
 
   createParticleEffect(tile) {
-    // ASSIGNMENT REQUIREMENT: Creating multiple DOM elements dynamically
+    // Creating multiple DOM elements dynamically
     const particleCount = 8;
     const tileRect = tile.getBoundingClientRect();
 
     for (let i = 0; i < particleCount; i++) {
-      // ASSIGNMENT REQUIREMENT: Dynamic element creation and styling
+      // Dynamic element creation and styling
       const particle = document.createElement("div");
       particle.className = "particle-effect";
 
@@ -415,7 +408,7 @@ class Game2048 {
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
 
-      // ASSIGNMENT REQUIREMENT: Dynamic CSS property manipulation
+      // Dynamic CSS property manipulation
       particle.style.setProperty("--random-x", `${x}px`);
       particle.style.setProperty("--random-y", `${y}px`);
 
@@ -431,7 +424,7 @@ class Game2048 {
   }
 
   animateScoreIncrease() {
-    // ASSIGNMENT REQUIREMENT: DOM manipulation for visual feedback
+    // DOM manipulation for visual feedback
     const scoreElement = document.getElementById("score");
     scoreElement.classList.add("score-increase");
 
@@ -441,7 +434,7 @@ class Game2048 {
   }
 
   updateDisplay() {
-    // ASSIGNMENT REQUIREMENT: Modifying DOM content based on game state
+    // Modifying DOM content based on game state
     document.getElementById("score").textContent = this.score;
     document.getElementById("best-score").textContent = this.bestScore;
 
@@ -453,14 +446,14 @@ class Game2048 {
   }
 
   checkGameState() {
-    // ASSIGNMENT REQUIREMENT: Game state management and DOM manipulation
+    // Game state management and DOM manipulation
     // Check for win condition (2048 tile)
     if (!this.gameWon) {
       for (let row = 0; row < 4; row++) {
         for (let col = 0; col < 4; col++) {
           if (this.board[row][col] === 2048) {
             this.gameWon = true;
-            // ASSIGNMENT REQUIREMENT: Modifying DOM visibility based on game state
+            // Modifying DOM visibility based on game state
             document.getElementById("win-message").style.display = "flex";
             return;
           }
@@ -471,7 +464,7 @@ class Game2048 {
     // Check for game over
     if (this.isGameOver()) {
       this.gameOver = true;
-      // ASSIGNMENT REQUIREMENT: Modifying DOM visibility based on game state
+      // Modifying DOM visibility based on game state
       document.getElementById("game-over").style.display = "flex";
     }
   }
@@ -507,7 +500,7 @@ class Game2048 {
   }
 
   newGame() {
-    // ASSIGNMENT REQUIREMENT: Resetting game state and DOM elements
+    // Resetting game state and DOM elements
     this.board = [];
     this.previousBoard = [];
     this.score = 0;
@@ -517,7 +510,7 @@ class Game2048 {
     this.animationQueue = [];
     this.newTiles.clear();
 
-    // ASSIGNMENT REQUIREMENT: Modifying DOM visibility based on game state
+    // Modifying DOM visibility based on game state
     document.getElementById("game-over").style.display = "none";
     document.getElementById("win-message").style.display = "none";
 
@@ -526,7 +519,7 @@ class Game2048 {
   }
 }
 
-// ASSIGNMENT REQUIREMENT: Initializing the game when DOM is loaded
+// Initializing the game when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   new Game2048();
 });
