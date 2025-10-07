@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048 - Apple Style</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">2048</h1>
+        <div class="score-container">
+          <div class="score-box">
+            <div class="score-label">SCORE</div>
+            <div class="score-value" id="score">0</div>
+          </div>
+          <div class="score-box">
+            <div class="score-label">BEST</div>
+            <div class="score-value" id="best-score">0</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="game-info">
+        <p class="game-description">
+          Join the tiles, get to <strong>2048!</strong>
+        </p>
+        <button class="new-game-btn" id="new-game">New Game</button>
+      </div>
+
+      <div class="game-container">
+        <div class="game-board" id="game-board">
+          <!-- Game tiles will be generated here -->
+        </div>
+      </div>
+
+      <div class="controls">
+        <p class="controls-text">Use arrow keys or swipe to move tiles</p>
+        <div class="keyboard-hint">
+          <div class="key">↑</div>
+          <div class="key">↓</div>
+          <div class="key">←</div>
+          <div class="key">→</div>
+        </div>
+      </div>
+
+      <div class="game-over" id="game-over">
+        <div class="game-over-content">
+          <h2 id="game-over-title">Game Over!</h2>
+          <p id="game-over-message">Try again to reach 2048!</p>
+          <button class="try-again-btn" id="try-again">Try Again</button>
+        </div>
+      </div>
+
+      <div class="win-message" id="win-message">
+        <div class="win-content">
+          <h2>🎉 You Win! 🎉</h2>
+          <p>Congratulations! You reached 2048!</p>
+          <button class="continue-btn" id="continue-game">
+            Continue Playing
+          </button>
+          <button class="new-game-btn" id="new-game-win">New Game</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
